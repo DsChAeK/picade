@@ -19,7 +19,7 @@ This is a modified firmware for the retail Picade
         DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
         ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-## Contribution:  
+## Contribution
 I used and modified code from some hard workers:
 
 https://github.com/pimoroni/Picade-Sketch
