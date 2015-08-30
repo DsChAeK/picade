@@ -58,12 +58,12 @@
 
 static input_key inputs_key[] =         
 {
-  { KEY_UP_ARROW,    UP     },
+  { KEY_UP_ARROW,    UP     }, // Control panel
   { KEY_DOWN_ARROW,  DOWN   },
   { KEY_LEFT_ARROW,  LEFT   },
   { KEY_RIGHT_ARROW, RIGHT  },
 
-  { 'a',             BTN_1  }, // Control panel
+  { 'a',             BTN_1  }, 
   { 's',             BTN_2  },
   { 'd',             BTN_3  },
   { 'z',             BTN_4  },
@@ -73,12 +73,12 @@ static input_key inputs_key[] =
   { 'q',             START  }, // Front side
   { 'w',             COIN   },
   
-  { KEY_LEFT_CTRL,   ENTER  }, // Left side
+  { KEY_LEFT_CTRL,   ENTER  }, // Right side
   { KEY_ESC,         ESCAPE },
   
 #ifndef ENABLE_VOLUME_BUTTONS
   /* Change these lines to set key bindings for VOL_UP and VOL_DN */
-  { 'u',             VOL_UP }, // Right side     
+  { 'u',             VOL_UP }, // Left side     
   { 'd',             VOL_DN },
 #endif
 };
