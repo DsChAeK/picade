@@ -19,16 +19,17 @@ This is a modified firmware for the retail Picade
         DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
         ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-* Contribution:  I used and modified code from some hard workers:
+## Contribution:  
+I used and modified code from some hard workers:
 
-               https://github.com/pimoroni/Picade-Sketch
-               -> basic sketch code
-                 
-               http://www.imaginaryindustries.com/blog/?p=80
-               -> code for usb game controller recognition    
-                 
-               http://www.zerker.ca/zzone/
-               -> code to let the board finally act like a SNES controller
+https://github.com/pimoroni/Picade-Sketch
+-> basic sketch code
+
+http://www.imaginaryindustries.com/blog/?p=80
+-> code for usb game controller recognition    
+
+http://www.zerker.ca/zzone/
+-> code to let the board finally act like a SNES controller
 
 ## Compile
 Install Arduino (v1.6.5) and replace files from \USB_HID\ in ..\Arduino\hardware\arduino\avr\cores\arduino
