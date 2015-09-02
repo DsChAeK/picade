@@ -136,10 +136,11 @@ void CheckJoystick()
    * Extensive testing with R-Type 3 also did not register any nuisance shots when releasing
    * a charged shot.
    */
-  
-  delay(DELAY_BUTTON_DEBOUNCE);
+
   Joystick.setState(&joySt);
-  delay(DELAY_BUTTON_DEBOUNCE);
+  
+  // Added a small delay beause it prevents bouncing for me
+  delayMicroseconds(5000);
 }
 
 #endif
