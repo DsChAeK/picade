@@ -35,6 +35,10 @@ http://www.zerker.ca/zzone/
 Install Arduino (v1.6.5) and replace files from \USB_HID\ in ..\Arduino\hardware\arduino\avr\cores\arduino
 
 ## Changes
+
+v1.1, 04.09.2015
+* Changed joystick debounce to fix slow volume reaction
+
 v1.0, 29.08.2015
 * Modularized project files (keyboard/joystick/volume)
 * Only two main functions in each module (Init/Check)
