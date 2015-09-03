@@ -24,6 +24,7 @@ JoyState_t joySt = { .data = {0, 0, 0, 0} };
 // Initial states for all buttons. 'High' means button is NOT pressed.
 volatile SnesPad_t snesdata = {.data = 0xFFFF };
 volatile int shiftreg = 0;
+volatile int cnt = 0;
 
 /** ISR when the SNES LATCH line is set to HIGH. Stores the buttons into
  * the shift register and prepares the first value on the data line.*/
@@ -75,6 +76,8 @@ void InitJoystick()
   joySt.yAxis = 127;
   
   Joystick.setState(&joySt);
+
+  cnt = 0;
 }
 
 
@@ -84,63 +87,68 @@ void InitJoystick()
  * */
 void CheckJoystick()
 {
-  // Aquire and store the SNES button states into the SNES data struct
-  snesdata.button_X = digitalRead(BUTTON_X);
-  snesdata.button_Y = digitalRead(BUTTON_Y);
-  snesdata.button_A = digitalRead(BUTTON_A);
-  snesdata.button_B = digitalRead(BUTTON_B);
-  snesdata.button_L = digitalRead(BUTTON_L);
-  snesdata.button_R = digitalRead(BUTTON_R);
-  snesdata.button_Select = digitalRead(BUTTON_SELECT);
-  snesdata.button_Start = digitalRead(BUTTON_START);
-  snesdata.dpad_up = digitalRead(DPAD_UP);
-  snesdata.dpad_down = digitalRead(DPAD_DOWN);
-  snesdata.dpad_left = digitalRead(DPAD_LEFT);
-  snesdata.dpad_right = digitalRead(DPAD_RIGHT);
-  
-  // Acquire and store the button states into the USB data struct
-  joySt.button_Y = !snesdata.button_Y;
-  joySt.button_B = !snesdata.button_B;
-  joySt.button_A = !snesdata.button_A;
-  joySt.button_X = !snesdata.button_X;
-  joySt.button_L = !snesdata.button_L;
-  joySt.button_R = !snesdata.button_R;
-  joySt.button_Select = !snesdata.button_Select;
-  joySt.button_Start = !snesdata.button_Start;
- 
-  // Convert the digital joystick position into analog X/Y axis
-  if (!snesdata.dpad_left)
-      joySt.xAxis = 0;
-  else if (!snesdata.dpad_right)
-      joySt.xAxis = 255;
-  else
-      joySt.xAxis = 127;
+  cnt++;
 
-  if (!snesdata.dpad_up)
-      joySt.yAxis = 0;
-  else if (!snesdata.dpad_down)
-      joySt.yAxis = 255;
-  else
-      joySt.yAxis = 127;
- 
-  /* Timing statistics for the USB call:
-   * - If USB Connected and utilized: ~1 ms (total frame time)
-   * - If USB Connected and idle: ~500 ms (total frame time)
-   * - If USB Disconnected entirely: ~25 us function call; ~100 us total frame time
-   * 
-   * This is also why there is no debouncing; worst case bounce is measured at ~ 10 us
-   * (See SDS00009), which is less than one frame. Even with the fastest SNES frame time,
-   * it will not be possible to detect both the high and low parts of a bounce.
-   * That's not even taking into account the fact that the SNES only samples every
-   * 16.67 ms (60 Hz).
-   * Extensive testing with R-Type 3 also did not register any nuisance shots when releasing
-   * a charged shot.
-   */
-
-  Joystick.setState(&joySt);
+  // add a short delay to prevent bouncing
+  if (cnt > DELAY_BUTTON_DEBOUNCE/5)
+  {
+    cnt = 0;
+    
+    // Aquire and store the SNES button states into the SNES data struct
+    snesdata.button_X = digitalRead(BUTTON_X);
+    snesdata.button_Y = digitalRead(BUTTON_Y);
+    snesdata.button_A = digitalRead(BUTTON_A);
+    snesdata.button_B = digitalRead(BUTTON_B);
+    snesdata.button_L = digitalRead(BUTTON_L);
+    snesdata.button_R = digitalRead(BUTTON_R);
+    snesdata.button_Select = digitalRead(BUTTON_SELECT);
+    snesdata.button_Start = digitalRead(BUTTON_START);
+    snesdata.dpad_up = digitalRead(DPAD_UP);
+    snesdata.dpad_down = digitalRead(DPAD_DOWN);
+    snesdata.dpad_left = digitalRead(DPAD_LEFT);
+    snesdata.dpad_right = digitalRead(DPAD_RIGHT);
+    
+    // Acquire and store the button states into the USB data struct
+    joySt.button_Y = !snesdata.button_Y;
+    joySt.button_B = !snesdata.button_B;
+    joySt.button_A = !snesdata.button_A;
+    joySt.button_X = !snesdata.button_X;
+    joySt.button_L = !snesdata.button_L;
+    joySt.button_R = !snesdata.button_R;
+    joySt.button_Select = !snesdata.button_Select;
+    joySt.button_Start = !snesdata.button_Start;
+   
+    // Convert the digital joystick position into analog X/Y axis
+    if (!snesdata.dpad_left)
+        joySt.xAxis = 0;
+    else if (!snesdata.dpad_right)
+        joySt.xAxis = 255;
+    else
+        joySt.xAxis = 127;
   
-  // Added a small delay beause it prevents bouncing for me
-  delayMicroseconds(5000);
+    if (!snesdata.dpad_up)
+        joySt.yAxis = 0;
+    else if (!snesdata.dpad_down)
+        joySt.yAxis = 255;
+    else
+        joySt.yAxis = 127;
+   
+    /* Timing statistics for the USB call:
+     * - If USB Connected and utilized: ~1 ms (total frame time)
+     * - If USB Connected and idle: ~500 ms (total frame time)
+     * - If USB Disconnected entirely: ~25 us function call; ~100 us total frame time
+     * 
+     * This is also why there is no debouncing; worst case bounce is measured at ~ 10 us
+     * (See SDS00009), which is less than one frame. Even with the fastest SNES frame time,
+     * it will not be possible to detect both the high and low parts of a bounce.
+     * That's not even taking into account the fact that the SNES only samples every
+     * 16.67 ms (60 Hz).
+     * Extensive testing with R-Type 3 also did not register any nuisance shots when releasing
+     * a charged shot.
+     */
+  
+    Joystick.setState(&joySt);  
+  }
 }
 
 #endif
