@@ -4,7 +4,7 @@ This is a modified firmware for the retail Picade
 ## Info
 * Author:        DsChAeK
 
-* Version:       v1.1
+* Version:       v1.2
 
 * License:     Copyright (c) 2015 by DsChAeK
 
@@ -36,7 +36,10 @@ Install Arduino (v1.6.5) and replace files from \USB_HID\ in ..\Arduino\hardware
 
 ## Changes
 
-v1.1, 04.09.2015
+v1.2, 04.09.2015
+* Fixed volume zero bug
+
+v1.1, 03.09.2015
 * Changed joystick debounce to fix slow volume reaction
 
 v1.0, 29.08.2015
