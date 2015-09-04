@@ -76,7 +76,7 @@ void volume_current_fade(int level)
 
 void volume_current_reset()
 {
-  volume_current=VOLUME_MAX_GAIN_STEPS; // we go all steps down!
+  volume_current=VOLUME_MAX_GAIN_STEPS+1; // we go all steps down!
   
   while(volume_current > 0)
   {
