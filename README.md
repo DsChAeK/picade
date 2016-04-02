@@ -31,8 +31,21 @@ http://www.imaginaryindustries.com/blog/?p=80
 http://www.zerker.ca/zzone/
 -> code to let the board finally act like a SNES controller
 
-## Compile
-Install Arduino (v1.6.5) and replace files from \USB_HID\ in ..\Arduino\hardware\arduino\avr\cores\arduino
+## Compile/Flash
+
+* Download Arduino IDE v1.6.5 from here: https://www.arduino.cc/en/Main/OldSoftwareReleases#previous3
+* Download latest firmware sources as zip: https://github.com/DsChAeK/Picade/releases
+* Extract it and replace the files from your arduino installation directory ../Arduino/hardware/arduino/avr/cores/arduino
+  with those from the extracted subdirectory /USB_HID/ (backup recommended!)
+* Plugin the USB Cable from Arduino Board into your PC, wait a few seconds to let it initialize.
+* Open Picade.ino in Arduino IDE.
+* Go into "File -> Preferences" and select both checkboxes at "Show verbose output during:"
+* Select "Tools -> Board -> Arduino Leonardo"
+* Select "Programmer -> AVRISP mkll"
+* Select "Tools -> Port -> COMx (Arduino Leonardo)"
+* Select "Sketch -> Verify/Compile", should end without errors. (-> "Sketch uses 7,728 bytes of program...")
+* Select "Sketch -> Upload", should end without errors. (-> "avrdude done. Thank you")
+
 
 ## Changes
 
