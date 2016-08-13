@@ -4,7 +4,7 @@ This is a modified firmware for the retail Picade
 ## Info
 * Author:        DsChAeK
 
-* Version:       v1.2
+* Version:       v1.3
 
 * License:     Copyright (c) 2015 by DsChAeK
 
