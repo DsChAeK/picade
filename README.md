@@ -48,6 +48,9 @@ http://www.zerker.ca/zzone/
 
 
 ## Changes
+v1.3, 04.09.2015
+* Use front buttons for input
+* Use volume buttons for input (optional)
 
 v1.2, 04.09.2015
 * Fixed volume zero bug

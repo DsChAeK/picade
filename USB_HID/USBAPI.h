@@ -116,6 +116,10 @@ typedef union JoyState
         uint16_t   button_R2: 1;
         uint16_t   button_Select: 1;
         uint16_t   button_Start: 1;
+		uint16_t   button_Coin: 1;
+        uint16_t   button_1Up: 1;
+		uint16_t   button_L1: 1;
+        uint16_t   button_R1: 1;
     };
     
     uint8_t data[4];

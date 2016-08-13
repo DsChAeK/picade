@@ -61,7 +61,14 @@ void InitJoystick()
   pinMode(BUTTON_R, INPUT_PULLUP);
   pinMode(BUTTON_SELECT, INPUT_PULLUP);
   pinMode(BUTTON_START, INPUT_PULLUP);
-  
+  pinMode(BUTTON_COIN, INPUT_PULLUP);
+  pinMode(BUTTON_1UP, INPUT_PULLUP);
+
+  #ifndef ENABLE_VOLUME_BUTTONS
+  pinMode(BUTTON_L1, INPUT_PULLUP);
+  pinMode(BUTTON_R1, INPUT_PULLUP); 
+  #endif
+
   // Configure the SNES input/output pins and ISR settings
   pinMode(SNES_LATCH, INPUT_PULLUP);
   pinMode(SNES_CLOCK, INPUT_PULLUP);
@@ -103,6 +110,14 @@ void CheckJoystick()
     snesdata.button_R = digitalRead(BUTTON_R);
     snesdata.button_Select = digitalRead(BUTTON_SELECT);
     snesdata.button_Start = digitalRead(BUTTON_START);
+    snesdata.button_Coin = digitalRead(BUTTON_COIN);
+    snesdata.button_1Up = digitalRead(BUTTON_1UP);
+    
+    #ifndef ENABLE_VOLUME_BUTTONS
+    snesdata.button_L1 = digitalRead(BUTTON_L1);
+    snesdata.button_R1 = digitalRead(BUTTON_R1);
+    #endif
+    
     snesdata.dpad_up = digitalRead(DPAD_UP);
     snesdata.dpad_down = digitalRead(DPAD_DOWN);
     snesdata.dpad_left = digitalRead(DPAD_LEFT);
@@ -117,7 +132,14 @@ void CheckJoystick()
     joySt.button_R = !snesdata.button_R;
     joySt.button_Select = !snesdata.button_Select;
     joySt.button_Start = !snesdata.button_Start;
-   
+    joySt.button_Coin = !snesdata.button_Coin;
+    joySt.button_1Up = !snesdata.button_1Up;
+    
+    #ifndef ENABLE_VOLUME_BUTTONS
+    joySt.button_L1 = !snesdata.button_L1;
+    joySt.button_R1 = !snesdata.button_R1;
+    #endif
+       
     // Convert the digital joystick position into analog X/Y axis
     if (!snesdata.dpad_left)
         joySt.xAxis = 0;

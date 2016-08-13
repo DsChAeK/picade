@@ -9,14 +9,23 @@
 // ### General settings ###
 // ########################
 
+// CAUTION: If uncommented it is highly recommended to first choose 80% audio level in system!!!
 #define ENABLE_VOLUME_BUTTONS    // Uncomment to bind the volume buttons to keys
+// CAUTION: If uncommented it is highly recommended to first choose 80% audio level in system!!!
+
 #define ENABLE_JOYSTICK          // Uncomment to use joystick instead of keyboard control
 
 #define DELAY_VOLUME_AMP      40 // Delay(ms) for set volume amplifier
 #define DELAY_BUTTON_DEBOUNCE 25 // Delay(ms) for debouncing buttons
 
 #define VOLUME_MAX_GAIN       20 // Set maximum volume level (0-VOLUME_MAX_GAIN_STEPS)
-#define VOLUME_STARTUP_GAIN    5 // Set startup volume (0-VOLUME_MAX_GAIN). Set -1 to save and load the last volume.
+
+#ifndef ENABLE_VOLUME_BUTTONS
+  // If volume buttons are disabled we choose max. gain so the system can control the full range
+  #define VOLUME_STARTUP_GAIN  VOLUME_MAX_GAIN // Set startup volume (0-VOLUME_MAX_GAIN). Set -1 to save and load the last volume.
+#else
+  #define VOLUME_STARTUP_GAIN  5 // Set startup volume (0-VOLUME_MAX_GAIN). Set -1 to save and load the last volume.
+#endif  
 
 
 // ####################
@@ -102,5 +111,11 @@ static input_key inputs_key[] =
 
 #define BUTTON_START   ENTER
 #define BUTTON_SELECT  ESCAPE
+
+#define BUTTON_COIN    COIN
+#define BUTTON_1UP     START
+
+#define BUTTON_L1      VOL_UP
+#define BUTTON_R1      VOL_DN
 
 #endif

@@ -159,19 +159,20 @@ const u8 _hidReportDescriptor[] = {
     0xc0,                          //   END_COLLECTION
     0x05, 0x09,                    //   USAGE_PAGE (Button)
     0x19, 0x01,                    //   USAGE_MINIMUM (Button 1)
-    0x29, 0x0a,                    //   USAGE_MAXIMUM (Button 10)
+    0x29, 0x0e,                    //   USAGE_MAXIMUM (Button 14)
     0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
     0x25, 0x01,                    //   LOGICAL_MAXIMUM (1)
     0x75, 0x01,                    //   REPORT_SIZE (1)
-    0x95, 0x0a,                    //   REPORT_COUNT (10)
+    0x95, 0x0e,                    //   REPORT_COUNT (14)
     0x55, 0x00,                    //   UNIT_EXPONENT (0)
     0x65, 0x00,                    //   UNIT (None)
     0x81, 0x02,                    //   INPUT (Data,Var,Abs)
     0x95, 0x01,                    //   REPORT_COUNT (1)
-    0x75, 0x06,                    //   REPORT_SIZE (6)
+    0x75, 0x02,                    //   REPORT_SIZE (2) -> count up if less buttons, count down for more!
     0x81, 0x03,                    //   INPUT (Cnst,Var,Abs)
-    0xc0                           // END_COLLECTION
-    
+
+	0xc0                           // END_COLLECTION
+ 
 #endif
 };
 
@@ -260,7 +261,7 @@ Joystick_::Joystick_()
 
 void Joystick_::setState(JoyState_t *joySt)
 {
-    HID_SendReport(3, joySt->data, sizeof(JoyState_t));
+  HID_SendReport(3, joySt->data, sizeof(JoyState_t));
     // The joystick is specified as using report 3 in the descriptor. That's where the "3" comes from
 }
 

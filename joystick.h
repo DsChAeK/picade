@@ -22,7 +22,15 @@ typedef union SnesPad
         uint16_t   button_X: 1;
         uint16_t   button_L: 1;
         uint16_t   button_R: 1;
-        uint16_t   padding: 4;
+        uint16_t   button_Coin: 1;
+        uint16_t   button_1Up: 1;
+
+        #ifndef ENABLE_VOLUME_BUTTONS
+        uint16_t   button_L1: 1;
+        uint16_t   button_R1: 1;
+        #else
+        uint16_t   padding: 2;
+        #endif
     };
     
     uint16_t data;
@@ -34,4 +42,3 @@ void InitJoystick(void);
 void CheckJoystick(void);
 
 #endif
-
