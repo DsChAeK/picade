@@ -1,10 +1,18 @@
-# Picade
-This is a modified firmware for the retail Picade
+# Info
+This is a modified firmware for the retail Picade arduino board.
+The original firmware was not able to work with recalbox because the board
+acts like a keyboard and recalbox only supports joysticks in games.
+It is preconfigured to work with recalbox.
+
+## Features
+* Board can act like a joystick or a keyboard
+* One single configuration file (config.h)
+* Modular code design
  
 ## Info
-* Author:        DsChAeK
+* Author:      DsChAeK
 
-* Version:       v1.3
+* Version:     v1.3
 
 * License:     Copyright (c) 2015 by DsChAeK
 
