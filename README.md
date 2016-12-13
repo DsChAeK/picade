@@ -52,7 +52,7 @@ http://www.zerker.ca/zzone/
 * Select "*Tools -> Port -> COMx (Arduino Leonardo)*"
 * Select "*Sketch -> Verify/Compile*", it should end without errors. (-> like "*Sketch uses 7,728 bytes of program...*")
 * Select "*Sketch -> Upload*", it should also end without errors. (-> like "*avrdude done. Thank you*")
-
+* If you want the original firmware back again use https://github.com/pimoroni/Picade-Sketch/releases
 
 ## Changes
 v1.3, 13.08.2016
