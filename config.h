@@ -9,9 +9,9 @@
 // ### General settings ###
 // ########################
 
-// CAUTION: If uncommented it is highly recommended to first choose 80% audio level in system!!!
-#define ENABLE_VOLUME_BUTTONS    // Uncomment to bind the volume buttons to keys
-// CAUTION: If uncommented it is highly recommended to first choose 80% audio level in system!!!
+// CAUTION: Before comment the ENABLE_VOLUME_BUTTONS line it is highly recommended to set system audio level at least to 80%!!!
+#define ENABLE_VOLUME_BUTTONS // Comment this line to bind the volume buttons to keys
+// CAUTION: Before comment the ENABLE_VOLUME_BUTTONS line it is highly recommended to set system audio level at least to 80%!!!
 
 #define ENABLE_JOYSTICK          // Uncomment to use joystick instead of keyboard control
 
