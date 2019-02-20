@@ -10,7 +10,7 @@
 // ########################
 
 // CAUTION: Before comment the ENABLE_VOLUME_BUTTONS line it is highly recommended to set system audio level at least to 80%!!!
-#define ENABLE_VOLUME_BUTTONS // Comment this line to bind the volume buttons to keys
+#define ENABLE_VOLUME_BUTTONS // Comment this line to bind the volume buttons to keys (only working if ENABLE_JOYSTICK line is commented!)
 // CAUTION: Before comment the ENABLE_VOLUME_BUTTONS line it is highly recommended to set system audio level at least to 80%!!!
 
 #define ENABLE_JOYSTICK          // Uncomment to use joystick instead of keyboard control
